@@ -1,4 +1,6 @@
-
+[user]
+	email = yoyonel@hotmail.com
+	name = yoyonel
 [alias]
 	# short aliases
 	st = status 
@@ -23,6 +25,10 @@
 	log-branch = log origin/master..
 	blog = !git log-branch
 	mlog = !git log --committer=\"`git me`\"
+	#
+	# url: http://pioupioum.fr/developpement/git-alias-productivite.html
+	# Afficher un historique condensé des commits
+	oneline = log --pretty=oneline --abbrev-commit --graph --decorate
 
 	# update current branch
 	update = !sh -c 'git fetch origin && git rebase -p origin/${1-master}' -
@@ -104,6 +110,22 @@
 	deploy = status
 	crazy = status
 	stupid = status
+
+	# url: http://pioupioum.fr/developpement/git-alias-productivite.html
+
+	# Ouvrir dans TextMate les fichiers non commités	
+	# git subl permet d’ouvrir dans mon éditeur de code préféré les fichiers modifiés depuis le dernier commit.
+	# L’alias git sublall tiendra compte des fichiers inconnus de l’index du projet.
+	subl = !git-ls-files -m -z | xargs -0 subl
+	sublall = !git-ls-files -m -o --exclude-standard -z | xargs -0 subl
+
+	# Faire le point rapidement
+	changes = diff --name-status
+    dic = diff --cached
+    diffstat = diff --stat
+
+    #
+    who = shortlog -sne
 
 [color]
 	ui = auto
